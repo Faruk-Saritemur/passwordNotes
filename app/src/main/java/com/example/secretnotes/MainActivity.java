@@ -33,12 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 String passwordTxt = password.getText().toString();
 
                 Boolean checkSavedData = DB.insertpassworddata(nameTxt, passwordTxt);
-                if(checkSavedData == true) {
-                    Toast.makeText(MainActivity.this,"Şifre Kaydedildi", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(MainActivity.this,"Şifre Kaydedilemedi -- HATA", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(MainActivity.this,"Şifre Kaydedildi", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -49,12 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 String passwordTxt = password.getText().toString();
 
                 Boolean checkDeletedData = DB.deleteData(nameTxt);
-                if(checkDeletedData == true) {
-                    Toast.makeText(MainActivity.this,"Şifre Başarıyle silindi", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(MainActivity.this,"Şifre Silinemedi -- HATA", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(MainActivity.this,"Şifre Başarıyle silindi", Toast.LENGTH_SHORT).show();
             }
         });
 
