@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 String passwordTxt = password.getText().toString();
 
                 Boolean checkSavedData = DB.insertpassworddata(nameTxt, passwordTxt);
-                if(checkSavedData==true) {
+                if(checkSavedData) {
                     Toast.makeText(MainActivity.this, "Şifre Kaydedildi", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 name.setText(null);
                 password.setText(null);
 
+                System.out.println("tested");
 
             }
         });
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setCancelable(true);
-                builder.setTitle("Kayıtlı Şifreler");
+                builder.setTitle("Kayıtlı Şifreler"+"\n");
                 builder.setMessage(buffer.toString());
                 builder.show();
             }
