@@ -8,11 +8,12 @@ import android.view.View;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText name, password;
-    Button save, delete, view;
+    Button save, update, delete, view;
     DBHelper DB;
 
     @Override
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         name = findViewById(R.id.txtName);
         password = findViewById(R.id.txtPassword);
         save = findViewById(R.id.btnSave);
+        update = findViewById(R.id.btnUpdate);
         delete = findViewById(R.id.btnDelete);
         view = findViewById(R.id.btnView);
         DB = new DBHelper(this);
@@ -33,7 +35,30 @@ public class MainActivity extends AppCompatActivity {
                 String passwordTxt = password.getText().toString();
 
                 Boolean checkSavedData = DB.insertpassworddata(nameTxt, passwordTxt);
-                Toast.makeText(MainActivity.this,"Şifre Kaydedildi", Toast.LENGTH_SHORT).show();
+                if(checkSavedData==true) {
+                    Toast.makeText(MainActivity.this, "Şifre Kaydedildi", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Şifre Kaydedilemedi -- Hata", Toast.LENGTH_SHORT).show();
+                }
+                name.setText(null);
+                password.setText(null);
+
+
+            }
+        });
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nameTxt = name.getText().toString();
+                String passwordTxt = password.getText().toString();
+
+                Boolean checkUpdatedData = DB.updateuserdata(nameTxt, passwordTxt);
+                Toast.makeText(MainActivity.this,"Şifre Güncellendi", Toast.LENGTH_SHORT).show();
+
+                name.setText(null);
+                password.setText(null);
             }
         });
 
@@ -45,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Boolean checkDeletedData = DB.deleteData(nameTxt);
                 Toast.makeText(MainActivity.this,"Şifre Başarıyle silindi", Toast.LENGTH_SHORT).show();
+
+                name.setText(null);
+                password.setText(null);
             }
         });
 
@@ -58,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 StringBuffer buffer = new StringBuffer();
                 while(res.moveToNext()) {
-                    buffer.append("Name :"+res.getString(0)+"\n");
-                    buffer.append("Password :"+res.getString(1)+"\n\n\n");
+                    buffer.append("Name :  "+res.getString(0)+"\n");
+                    buffer.append("Password :  "+res.getString(1)+"\n\n\n");
                 }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

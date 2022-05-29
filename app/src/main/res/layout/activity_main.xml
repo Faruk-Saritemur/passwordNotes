@@ -46,10 +46,19 @@
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Şifreni Kaydet"
+        android:layout_below="@id/txtPassword"
         android:layout_marginTop="50dp"
-        android:layout_below="@id/txtPassword"/>
+        android:text="Şifreni Kaydet"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Şifreni Güncelle"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/btnSave"/>
 
     <Button
         android:id="@+id/btnDelete"
@@ -58,7 +67,7 @@
         android:layout_marginTop="10dp"
         android:textSize="16dp"
         android:text="Şireni Sil"
-        android:layout_below="@id/btnSave"/>
+        android:layout_below="@id/btnUpdate"/>
 
     <Button
         android:id="@+id/btnView"
